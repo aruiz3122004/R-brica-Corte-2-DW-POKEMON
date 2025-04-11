@@ -1,0 +1,255 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Pokemon Solid', sans-serif;
+    letter-spacing: 2px;
+    color: #ffcb05;
+}
+
+body {
+    background: url('https://images.freecreatives.com/wp-content/uploads/2016/03/Free-HD-Pokemon-Wallpapers.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: #333;
+    line-height: 1.6;
+    position: relative;
+}
+
+/* Efecto de desenfoque para el fondo */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    filter: blur(2px);
+    z-index: -2;
+}
+
+header {
+    background-color: #ef5350;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-size: 2rem;
+    font-family: 'Pokemon Solid', sans-serif;
+    letter-spacing: 3px;
+    color: #ffcb05;
+    text-shadow: 
+        4px 4px 0 #2a75bb,
+        -2px -2px 0 #2a75bb,
+        2px -2px 0 #2a75bb,
+        -2px 2px 0 #2a75bb,
+        2px 2px 0 #2a75bb;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.filter-section {
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 2rem auto;
+    max-width: 600px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid #ef5350;
+    text-align: center;
+}
+
+.filter-section label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #333;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+#pokemon-filter {
+    width: 80%;
+    padding: 0.8rem 1.2rem;
+    font-size: 1rem;
+    border: 2px solid #3d7dca;
+    border-radius: 25px;
+    background-color: white;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%233d7dca'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.2rem;
+}
+
+#pokemon-filter:hover {
+    border-color: #ffcb05;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+#pokemon-filter:focus {
+    border-color: #ffcb05;
+    box-shadow: 0 0 0 3px rgba(255, 203, 5, 0.3);
+}
+
+/* Estilo para las opciones del select */
+#pokemon-filter option {
+    padding: 0.5rem;
+    background: white;
+    color: #333;
+}
+
+#pokemon-filter option:hover {
+    background-color: #ffcb05 !important;
+    color: #333;
+}
+
+/* Estilo para la opción seleccionada */
+#pokemon-filter option:checked {
+    background-color: #3d7dca;
+    color: white;
+}
+
+/* Estilo para el primer option (Mostrar todos) */
+#pokemon-filter option[value="all"] {
+    font-weight: bold;
+    color: #ef5350;
+}
+
+.pokemon-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.pokemon-card {
+    position: relative;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 4px solid transparent;
+    background-clip: padding-box;
+    /* Fondo de Pokéball */
+    background-image: url('https://pngimg.com/uploads/pokeball/pokeball_PNG19.png');
+    background-size: 70%; /* Tamaño ajustable */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-blend-mode: overlay; /*Hace que al deslizar el mouse sobre la card del pokemon aparezca la imagen de la pokeball al fondo*/
+}
+
+.pokemon-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.7); 
+    z-index: 0;
+}
+
+.pokemon-info, .pokemon-image {
+    position: relative;
+    z-index: 1;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.2);
+    background-blend-mode: normal;
+}
+
+.pokemon-image {
+    width: 100%;
+    height: 200px;
+    background-color: #f8f8f8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(248, 248, 248, 0.5); /* Más transparente para ver el fondo */
+}
+
+.pokemon-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.pokemon-info {
+    padding: 1.5rem;
+}
+
+.pokemon-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #333;
+    text-transform: capitalize;
+    background: rgba(255, 255, 255, 0.8);
+    margin: 8px;
+    border-radius: 8px;
+    padding: 1.2rem;
+}
+
+.pokemon-ability {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1.5rem 0;
+    margin-top: 2rem;
+}
+.github-link {
+    display: inline-block;
+    margin-top: 1rem;
+    transition: transform 0.3s ease;
+}
+
+.github-link img {
+    width: 32px;
+    height: 32px;
+    filter: invert(100%) sepia(0%) saturate(7500%) hue-rotate(46deg) brightness(107%) contrast(101%);
+    transition: all 0.3s ease;
+}
+
+.github-link:hover {
+    transform: scale(1.1);
+}
+
+.github-link:hover img {
+    filter: invert(71%) sepia(61%) saturate(433%) hue-rotate(183deg) brightness(96%) contrast(94%);
+}
+
+/* Responsividad */
+@media (max-width: 900px) {
+    .pokemon-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .pokemon-container {
+        grid-template-columns: 1fr;
+    }
+    
+    header h1 {
+        font-size: 1.5rem;
+    }
+}
