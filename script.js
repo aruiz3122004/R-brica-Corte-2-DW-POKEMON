@@ -1,6 +1,6 @@
 // Array con los nombres de los 15 Pokémon a mostrar
 const pokemonList = [
-    'ditto', 'pikachu', 'charizard', 'bulbasaur', 'squirtle',
+    'eeve', 'pikachu', 'charizard', 'bulbasaur', 'squirtle',
     'jigglypuff', 'mewtwo', 'hypno', 'snorlax', 'magikarp',
     'machamp', 'metapod', 'greninja', 'vaporeon', 'Lucario'
 ];
